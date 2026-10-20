@@ -79,6 +79,9 @@ details summary:hover{color:var(--accent)}
 details summary::after{content:"";width:9px;height:9px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(45deg);transition:transform .2s;flex-shrink:0}
 details[open] summary::after{transform:rotate(225deg)}
 details .a{padding:0 20px 18px;font-size:15px;color:var(--muted)}
+details.about{margin-bottom:0}
+details.about summary{font-size:24px;font-weight:700;padding:22px 26px}
+details.about .about-body{padding:2px 26px 24px}
 /* disclaimer */
 .disclaimer{font-size:13px;color:var(--faint);border-top:1px solid var(--border);padding-top:24px;margin-top:12px}
 footer{padding:28px 0 48px;color:var(--faint);font-size:13px;text-align:center}
@@ -108,17 +111,19 @@ a:focus-visible,.btn:focus-visible,summary:focus-visible{outline:2px solid var(-
   </header>
 
   <section>
-    <div class="card">
-      <h2 class="sec">Что это</h2>
-      <p class="human">Это не консультация в классическом смысле - я не скажу Вам, что купить, я не аналитик, не профи, не коуч, инвестиции - всего лишь моё хобби.</p>
-      <p>Это образовательная беседа. Вы рассказываете, как инвестируете сейчас, и задаёте вопросы. Я рассказываю, как делаю это я: как анализирую компании, на что смотрю в отчётности, как принимаю решения.</p>
-      <ul class="no">
-        <li>не персональные рекомендации "что купить / продать / держать";</li>
-        <li>не финансовый план, не налоговый и не юридический совет;</li>
-        <li>не гарантия доходности - её никто не даёт;</li>
-        <li>не фанат крипты/макроэкономики/геополитики/ТА.</li>
-      </ul>
-    </div>
+    <details class="about">
+      <summary>Что это</summary>
+      <div class="about-body">
+        <p class="human">Это не консультация в классическом смысле - я не скажу Вам, что купить, я не аналитик, не профи, не коуч, инвестиции - всего лишь моё хобби.</p>
+        <p>Это образовательная беседа. Вы рассказываете, как инвестируете сейчас, и задаёте вопросы. Я рассказываю, как делаю это я: как анализирую компании, на что смотрю в отчётности, как принимаю решения.</p>
+        <ul class="no">
+          <li>не персональные рекомендации "что купить / продать / держать";</li>
+          <li>не финансовый план, не налоговый и не юридический совет;</li>
+          <li>не гарантия доходности - её никто не даёт;</li>
+          <li>не фанат крипты/макроэкономики/геополитики/ТА.</li>
+        </ul>
+      </div>
+    </details>
   </section>
 
   <section>
@@ -166,7 +171,7 @@ a:focus-visible,.btn:focus-visible,summary:focus-visible{outline:2px solid var(-
 
   <section>
     <div class="reject">
-      <h3>Когда я могу отклонить заявку</h3>
+      <h3 style="color:var(--red)">Почему я могу отклонить заявку</h3>
       <p>Я проверяю каждую заявку вручную. Вероятность отклонения ничтожно мала, но честно назову возможные причины:</p>
       <ul>
         <li>вопросы не по моей теме - например, <span class="neg">крипта</span>, <span class="neg">трейдинг</span> с помощью <span class="neg">ТА</span>, <span class="neg">макроэкономика</span>, <span class="neg">геополитика</span> или <span class="neg">налоги</span>;</li>
