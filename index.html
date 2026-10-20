@@ -163,7 +163,8 @@ footer{padding:28px 0 48px;color:var(--faint);font-size:13px;text-align:center}
       </ul>
       <p style="margin-top:12px">Если я всё же отклоню заявку, деньги вернутся на Вашу карту: $9.41 из $10 (комиссию $0.59 удерживает Stripe).</p>
     </div>
-    <div id="calBox"></div>
+    <div id="cal-inline"></div>
+    <p class="fine">Если форма не загрузилась, бронирование доступно по прямой ссылке: <a href="https://cal.com/pavlo-lomakin/investing-talk" target="_blank" rel="noopener">cal.com/pavlo-lomakin/investing-talk</a></p>
   </section>
 
   <section>
@@ -226,18 +227,16 @@ footer{padding:28px 0 48px;color:var(--faint);font-size:13px;text-align:center}
   </footer>
 </div>
 
-<script>
-// Событие Cal.com (настроено 2026-10-20):
-const CALCOM_URL = "https://cal.com/pavlo-lomakin/investing-talk";
-const box = document.getElementById("calBox");
-if (CALCOM_URL) {
-  const f = document.createElement("iframe");
-  f.src = CALCOM_URL;
-  f.title = "Бронирование времени";
-  box.appendChild(f);
-} else {
-  box.innerHTML = '<div class="soon">Онлайн-бронирование скоро откроется.<br>Вопросы - в Threads: <a href="https://www.threads.com/@pavlo.lomakin">@pavlo.lomakin</a></div>';
-}
+<!-- Cal.com inline embed: виджет сам подстраивает высоту, без внутреннего скролла -->
+<script type="text/javascript">
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "investing-talk", {origin: "https://cal.com"});
+Cal.ns["investing-talk"]("inline", {
+  elementOrSelector: "#cal-inline",
+  config: {"layout": "month_view", "theme": "dark"},
+  calLink: "pavlo-lomakin/investing-talk"
+});
+Cal.ns["investing-talk"]("ui", {"layout": "month_view", "theme": "dark", "hideEventTypeDetails": false});
 </script>
 </body>
 </html>
