@@ -17,7 +17,7 @@
 <style>
 :root{
   --bg:#0d1117; --card:#141b26; --border:#243044;
-  --text:#e8ecf3; --muted:#98a2b3; --faint:#6b7688;
+  --text:#e8ecf3; --muted:#98a2b3; --faint:#828da0;
   --accent:#4f8cff; --accent-d:#3a6fd8; --green:#34d399; --red:#f87171;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -73,15 +73,21 @@ ul.no li::before{content:"✕";position:absolute;left:8px;color:var(--red)}
 .neg{color:var(--red);font-weight:600}
 /* faq */
 details{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:10px;padding:0}
-details summary{cursor:pointer;padding:16px 20px;font-weight:600;font-size:15px;list-style:none}
+details summary{cursor:pointer;padding:16px 20px;font-weight:600;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px;transition:color .15s}
 details summary::-webkit-details-marker{display:none}
-details summary::after{content:"+";float:right;color:var(--accent);font-weight:700}
-details[open] summary::after{content:"−"}
+details summary:hover{color:var(--accent)}
+details summary::after{content:"";width:9px;height:9px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(45deg);transition:transform .2s;flex-shrink:0}
+details[open] summary::after{transform:rotate(225deg)}
 details .a{padding:0 20px 18px;font-size:15px;color:var(--muted)}
 /* disclaimer */
 .disclaimer{font-size:13px;color:var(--faint);border-top:1px solid var(--border);padding-top:24px;margin-top:12px}
 footer{padding:28px 0 48px;color:var(--faint);font-size:13px;text-align:center}
-@media(max-width:600px){.hero{padding:48px 0 32px}.hero h1{font-size:30px}#calBox iframe{height:640px}}
+/* a11y, embed, sticky cta */
+a:focus-visible,.btn:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+#cal-inline{background:var(--card);border-radius:14px;min-height:620px}
+.sticky-cta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(20,27,38,.97);border-top:1px solid var(--border);padding:10px 16px;align-items:center;justify-content:space-between;gap:12px;font-size:14px;color:var(--muted)}
+.sticky-cta a{background:var(--accent);color:#fff;font-weight:700;text-decoration:none;padding:10px 18px;border-radius:10px;font-size:15px}
+@media(max-width:600px){.hero{padding:48px 0 32px}.hero h1{font-size:30px}.btn{display:block;text-align:center}.sticky-cta{display:flex}body{padding-bottom:62px}}
 </style>
 </head>
 <body>
@@ -251,5 +257,6 @@ function openHashDetails() {
 window.addEventListener("hashchange", openHashDetails);
 openHashDetails();
 </script>
+<div class="sticky-cta"><span>90 минут · $10 USD</span><a href="#booking">Выбрать время</a></div>
 </body>
 </html>
