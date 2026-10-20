@@ -54,6 +54,17 @@ ul.no li::before{content:"✕";position:absolute;left:8px;color:var(--red)}
 /* booking */
 #calBox iframe{width:100%;height:720px;border:1px solid var(--border);border-radius:14px;background:var(--card)}
 .soon{background:var(--card);border:1px dashed var(--border);border-radius:14px;padding:40px 26px;text-align:center;color:var(--muted);font-size:15px}
+/* reject reasons */
+.reject{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px}
+.reject h3{font-size:19px;font-weight:700;margin-bottom:10px}
+.reject p{font-size:15px;color:var(--muted)}
+.reject ul{list-style:none;margin-top:10px}
+.reject ul li{padding:6px 0 6px 28px;position:relative;font-size:15px;color:var(--muted)}
+.reject ul li::before{content:"-";position:absolute;left:10px;color:var(--accent);font-weight:700}
+.reject ul ul{margin-top:4px}
+.reject ul ul li{padding:4px 0 4px 24px}
+.reject ul ul li::before{content:"·";left:8px}
+.neg{color:var(--red);font-weight:600}
 /* faq */
 details{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:10px;padding:0}
 details summary{cursor:pointer;padding:16px 20px;font-weight:600;font-size:15px;list-style:none}
@@ -102,7 +113,7 @@ footer{padding:28px 0 48px;color:var(--faint);font-size:13px;text-align:center}
     <h2 class="sec">Как проходит</h2>
     <ol class="steps">
       <li><b>Выбираете время</b> - суббота или воскресенье, начало каждые 30 минут с 9:00 до 10:30 по Торонто.</li>
-      <li><b>Оплачиваете $10</b> - картой через Stripe или через PayPal.</li>
+      <li><b>Оплачиваете $10</b> - картой через Stripe.</li>
       <li><b>Я проверяю заявку</b> - читаю Ваши вопросы, при необходимости задаю уточняющие. До 24 часов.</li>
       <li><b>Получаете финальное письмо</b> - подтверждение и ссылку на Google Meet.</li>
     </ol>
@@ -126,6 +137,26 @@ footer{padding:28px 0 48px;color:var(--faint);font-size:13px;text-align:center}
   <section id="booking">
     <h2 class="sec">Выбрать время</h2>
     <p style="color:var(--muted);font-size:15px;margin-bottom:16px">Время ниже показано в Вашем часовом поясе. Встречи проходят в субботу и воскресенье с 9:00 до 12:00 по Торонто.</p>
+    <div class="reject">
+      <h3>Когда я могу отклонить заявку</h3>
+      <p>Я проверяю каждую заявку вручную. Вероятность отклонения ничтожно мала, но честно назову возможные причины:</p>
+      <ul>
+        <li>вопросы не по моей теме - например, <span class="neg">крипта</span>, <span class="neg">трейдинг</span> или <span class="neg">налоги</span>;</li>
+        <li><span class="neg">технический анализ</span>: я им не пользуюсь. Могу обсудить, почему, но сами принципы <span class="neg">ТА</span> не могут быть существенной частью разговора;</li>
+        <li><span class="neg">макроэкономика</span> и <span class="neg">геополитика</span>: я не являюсь приверженцем их разбора и не строю на них инвестиционные решения;</li>
+        <li>Вам нужна персональная рекомендация, <span class="neg">что купить или продать</span>, - я таких не даю;</li>
+        <li>из заявки не видно, чем я могу быть Вам полезен. А полезен я могу быть вот чем:
+          <ul>
+            <li>показать на конкретном примере, как я разбираю отчётность и оцениваю компанию;</li>
+            <li>разобрать Ваш портфель и/или Вашу инвест-стратегию и/или Ваш <a href="https://en.wikipedia.org/wiki/Investment_policy_statement" target="_blank" rel="noopener">IPS</a> (<a href="https://en.wikipedia.org/wiki/Investment_policy_statement" target="_blank" rel="noopener">инвестиционную декларацию</a> - личный документ с Вашими целями и правилами инвестирования, к налоговой декларации отношения не имеет): как я смотрю на структуру и риски;</li>
+            <li>обсудить, как я собираю портфель и по каким правилам принимаю решения;</li>
+            <li>разобрать ошибки и психологические ловушки долгосрочного инвестора;</li>
+            <li>просто побеседовать об инвестициях в отдельные акции и ETF на акции (не <span class="neg">крипта</span>).</li>
+          </ul>
+        </li>
+      </ul>
+      <p style="margin-top:12px">Если я всё же отклоню заявку, деньги вернутся на Вашу карту: $9.41 из $10 (комиссию $0.59 удерживает Stripe).</p>
+    </div>
     <div id="calBox"></div>
   </section>
 
