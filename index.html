@@ -238,5 +238,20 @@ Cal.ns["investing-talk"]("inline", {
 });
 Cal.ns["investing-talk"]("ui", {"layout": "month_view", "theme": "dark", "hideEventTypeDetails": false});
 </script>
+<script>
+// Открывать нужный пункт FAQ при переходе по якорю (например, #cancel-rules из формы бронирования)
+function openHashDetails() {
+  try {
+    if (!location.hash) return;
+    var el = document.querySelector(location.hash);
+    if (el && el.tagName === "DETAILS") {
+      el.open = true;
+      el.scrollIntoView();
+    }
+  } catch (e) {}
+}
+window.addEventListener("hashchange", openHashDetails);
+openHashDetails();
+</script>
 </body>
 </html>
