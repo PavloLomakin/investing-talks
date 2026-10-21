@@ -58,9 +58,9 @@ ul.no li::before{content:"✕";position:absolute;left:8px;color:var(--red)}
 .steps li b{color:var(--text)}
 .fine{font-size:13px;color:var(--faint);margin-top:14px}
 /* booking */
-/* booking: fixed height + scroll inside the widget, otherwise the embed resizes the iframe on every step and iOS yanks the page up/down */
-#cal-inline{background:var(--card);border:1px solid var(--border);border-radius:14px;height:720px;overflow:hidden}
-#cal-inline iframe{width:100%;height:100% !important;border:0;display:block}
+/* booking: embed auto-sizes the iframe to its content (no internal scrollbar); disableMobileScroll in the embed config stops the page-yank on mobile */
+#cal-inline{background:var(--card);border:1px solid var(--border);border-radius:14px;min-height:620px;overflow:hidden}
+#cal-inline iframe{width:100%;border:0;display:block}
 .soon{background:var(--card);border:1px dashed var(--border);border-radius:14px;padding:40px 26px;text-align:center;color:var(--muted);font-size:15px}
 /* reject reasons */
 .reject{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px}
@@ -91,7 +91,7 @@ footer{padding:28px 0 48px;color:var(--faint);font-size:13px;text-align:center}
 a:focus-visible,.btn:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
 .sticky-cta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(20,27,38,.97);border-top:1px solid var(--border);padding:10px 16px;align-items:center;justify-content:space-between;gap:12px;font-size:14px;color:var(--muted)}
 .sticky-cta a{background:var(--accent);color:#fff;font-weight:700;text-decoration:none;padding:10px 18px;border-radius:10px;font-size:15px}
-@media(max-width:600px){.hero{padding:48px 0 32px}.hero h1{font-size:30px}.btn{display:block;text-align:center}.sticky-cta{display:flex}body{padding-bottom:62px}#cal-inline{height:640px}}
+@media(max-width:600px){.hero{padding:48px 0 32px}.hero h1{font-size:30px}.btn{display:block;text-align:center}.sticky-cta{display:flex}body{padding-bottom:62px}}
 </style>
 </head>
 <body>
@@ -232,13 +232,13 @@ a:focus-visible,.btn:focus-visible,summary:focus-visible{outline:2px solid var(-
   </footer>
 </div>
 
-<!-- Cal.com inline embed: фиксированная высота контейнера, прокрутка внутри виджета -->
+<!-- Cal.com inline embed: авто-высота по содержимому, disableMobileScroll против дёргания страницы на мобильных -->
 <script type="text/javascript">
 (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
 Cal("init", "investing-talk", {origin: "https://cal.com"});
 Cal.ns["investing-talk"]("inline", {
   elementOrSelector: "#cal-inline",
-  config: {"layout": "month_view", "theme": "dark"},
+  config: {"layout": "month_view", "theme": "dark", "disableMobileScroll": true},
   calLink: "pavlo-lomakin/investing-talk"
 });
 Cal.ns["investing-talk"]("ui", {"layout": "month_view", "theme": "dark", "hideEventTypeDetails": false});
